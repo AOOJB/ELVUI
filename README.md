@@ -1,5 +1,5 @@
 # ELVUI
-Includes:
+Includes: <br>
 current health with abssorbs tag. Text format: [health:current-with-absorbs]
 current health deficit with absorbs tag. Text format: [health:currentdeficit-with-absorbs]
 
