@@ -1,4 +1,4 @@
-# ELVUI
+# ELVUI Mod
 Includes: <br>
 current health with abssorbs tag. Text format: [health:current-with-absorbs] <br>
 current health deficit with absorbs tag. Text format: [health:currentdeficit-with-absorbs] <br>
