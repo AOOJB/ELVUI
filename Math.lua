@@ -26,6 +26,7 @@ E.GetFormattedTextStyles = {
 	CURRENT = '%s',
 	CURRENT_MAX = '%s | %s',
 	CURRENT_PERCENT = '%s | %.1f%%',
+	PERCENT_CURRENT = '%.1f%% | %s',
 	CURRENT_MAX_PERCENT = '%s | %s | %.1f%%',
 	PERCENT = '%.1f%%',
 	DEFICIT = '-%s',
@@ -235,7 +236,7 @@ end
 function E:GetFormattedText(style, min, max, dec, short)
 	if max == 0 then max = 1 end
 
-	if style == 'CURRENT' or ((style == 'CURRENT_MAX' or style == 'CURRENT_MAX_PERCENT' or style == 'CURRENT_PERCENT') and min == max) then
+	if style == 'CURRENT' or ((style == 'CURRENT_MAX' or style == 'CURRENT_MAX_PERCENT' or style == 'CURRENT_PERCENT' or style == 'PERCENT_CURRENT') and min == max) then
 		return format(E.GetFormattedTextStyles.CURRENT, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
 	else
 		local useStyle = E.GetFormattedTextStyles[style]
@@ -246,13 +247,13 @@ function E:GetFormattedText(style, min, max, dec, short)
 			return (deficit > 0 and format(useStyle, short and E:ShortValue(deficit, dec) or BreakUpLargeNumbers(deficit))) or ''
 		elseif style == 'CURRENT_MAX' then
 			return format(useStyle, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min), short and E:ShortValue(max, dec) or BreakUpLargeNumbers(max))
-		elseif style == 'PERCENT' or style == 'CURRENT_PERCENT' or style == 'CURRENT_MAX_PERCENT' then
+		elseif style == 'PERCENT' or style == 'PERCENT_CURRENT' or style == 'CURRENT_PERCENT' or style == 'CURRENT_MAX_PERCENT' then
 			if dec then useStyle = gsub(useStyle, '%d', tonumber(dec) or 0) end
 			local perc = min / max * 100
 
 			if style == 'PERCENT' then
 				return format(useStyle, perc)
-			elseif style == 'CURRENT_PERCENT' then
+			elseif style == 'CURRENT_PERCENT' or style == 'PERCENT_CURRENT' then
 				return format(useStyle, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min), perc)
 			elseif style == 'CURRENT_MAX_PERCENT' then
 				return format(useStyle, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min), short and E:ShortValue(max, dec) or BreakUpLargeNumbers(max), perc)

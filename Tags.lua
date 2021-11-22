@@ -525,6 +525,16 @@ E:AddTag('health:current-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_
     return E:GetFormattedText('CURRENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true)
 end)
 
+E:AddTag('health:current-percent-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_AMOUNT_CHANGED UNIT_CONNECTION PLAYER_FLAGS_CHANGED', function(unit)
+    local absorb = UnitGetTotalAbsorbs(unit) or 0
+    if absorb == 0 then
+        return E:GetFormattedText('CURRENT_PERCENT', UnitHealth(unit), UnitHealthMax(unit), nil, true)
+    end
+
+    local healthTotalIncludingAbsorbs = UnitHealth(unit) + absorb
+    return E:GetFormattedText('CURRENT_PERCENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true)
+end)
+
 E:AddTag('health:currentdeficit-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_AMOUNT_CHANGED UNIT_CONNECTION PLAYER_FLAGS_CHANGED', function(unit)
     local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
