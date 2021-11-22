@@ -65,8 +65,11 @@ local UnitStagger = UnitStagger
 local GetCurrentTitle = GetCurrentTitle
 local GetTitleName = GetTitleName
 local UnitLevel = UnitLevel
+<<<<<<< HEAD
 local UnitPVPRank = UnitPVPRank
 local GetPVPRankInfo = GetPVPRankInfo
+=======
+>>>>>>> 469b7787a9c3e0bf35e8a6701af375cdbaa05089
 
 local GetUnitPowerBarTextureInfo = GetUnitPowerBarTextureInfo
 local C_QuestLog_GetTitleForQuestID = C_QuestLog.GetTitleForQuestID
@@ -505,6 +508,7 @@ E:AddTag('health:percent-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_
 	return E:GetFormattedText('PERCENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit))
 end, not E.Retail)
 
+<<<<<<< HEAD
 E:AddTag('health:deficit-percent:name', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_NAME_UPDATE', function(unit)
 	local currentHealth = UnitHealth(unit)
 	local deficit = UnitHealthMax(unit) - currentHealth
@@ -516,6 +520,8 @@ E:AddTag('health:deficit-percent:name', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_NAME_UP
 	end
 end)
 
+=======
+>>>>>>> 469b7787a9c3e0bf35e8a6701af375cdbaa05089
 E:AddTag('health:current-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_AMOUNT_CHANGED UNIT_CONNECTION PLAYER_FLAGS_CHANGED', function(unit)
     local absorb = UnitGetTotalAbsorbs(unit) or 0
     if absorb == 0 then
@@ -546,6 +552,20 @@ E:AddTag('health:currentdeficit-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_
     end
 end)
 
+<<<<<<< HEAD
+=======
+E:AddTag('health:deficit-percent:name', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_NAME_UPDATE', function(unit)
+	local currentHealth = UnitHealth(unit)
+	local deficit = UnitHealthMax(unit) - currentHealth
+
+	if deficit > 0 and currentHealth > 0 then
+		return _TAGS['health:percent-nostatus'](unit)
+	else
+		return _TAGS.name(unit)
+	end
+end)
+
+>>>>>>> 469b7787a9c3e0bf35e8a6701af375cdbaa05089
 E:AddTag('power:max', 'UNIT_DISPLAYPOWER UNIT_MAXPOWER', function(unit)
 	local powerType = UnitPowerType(unit)
 	local max = UnitPowerMax(unit, powerType)
@@ -1331,6 +1351,7 @@ if not E.Retail then
 			return GetPetFoodTypes()
 		end
 	end)
+<<<<<<< HEAD
 
 	E:AddTag('pvp:title', 'UNIT_NAME_UPDATE', function(unit)
 		if UnitIsPlayer(unit) then
@@ -1363,6 +1384,8 @@ if not E.Retail then
 			end
 		end
 	end)
+=======
+>>>>>>> 469b7787a9c3e0bf35e8a6701af375cdbaa05089
 end
 
 ------------------------------------------------------------------------
@@ -1562,9 +1585,12 @@ E.TagInfo = {
 		['faction'] = { category = 'PvP', description = "Displays 'Alliance' or 'Horde'" },
 		['pvp'] = { category = 'PvP', description = "Displays 'PvP' if the unit is pvp flagged" },
 		['pvptimer'] = { category = 'PvP', description = "Displays remaining time on pvp-flagged status" },
+<<<<<<< HEAD
 		['pvp:icon'] = { hidden = E.Retail, category = 'PvP', description = "Displays player pvp rank icon" },
 		['pvp:rank'] = { hidden = E.Retail, category = 'PvP', description = "Displays player pvp rank number" },
 		['pvp:title'] = { hidden = E.Retail, category = 'PvP', description = "Displays player pvp title" },
+=======
+>>>>>>> 469b7787a9c3e0bf35e8a6701af375cdbaa05089
 	-- Quest
 		['quest:info'] = { category = 'Quest', description = "Displays the quest objectives" },
 		['quest:title'] = { category = 'Quest', description = "Displays the quest title" },
