@@ -12,3 +12,4 @@ current health deficit with absorbs tag(Shows ur current health + absorbs relati
 
 Pull both files. <br>
 Go to "AddOns\ElvUI\Core\General" and replace remove the current files and replace. <br>
+Or just copy paste the entire code from here to each file. <br>
