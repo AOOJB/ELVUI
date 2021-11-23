@@ -253,8 +253,10 @@ function E:GetFormattedText(style, min, max, dec, short)
 
 			if style == 'PERCENT' then
 				return format(useStyle, perc)
-			elseif style == 'CURRENT_PERCENT' or style == 'PERCENT_CURRENT' then
+			elseif style == 'CURRENT_PERCENT' then
 				return format(useStyle, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min), perc)
+			elseif style == 'PERCENT_CURRENT' then
+				return format(useStyle, perc, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
 			elseif style == 'CURRENT_MAX_PERCENT' then
 				return format(useStyle, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min), short and E:ShortValue(max, dec) or BreakUpLargeNumbers(max), perc)
 			end
