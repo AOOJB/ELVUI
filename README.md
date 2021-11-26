@@ -5,6 +5,7 @@ Includes: <br>
 Math.lua mod:<br>
 Changed the formatted text so that every tag that results with a "-" between numbers is replaced with a " | ".<br>
 Added PERCENT_CURRENT textformatting style. which means every tag that uses "current-percent" can be written "percent-current" to change them around. <br>
+Changed minimum max value for number to also show %. Changed to 200, everything below 200 wont show % also. Specifically changed so powers wont show % also when majority is capped at 100-150 except mana. <br>
 
 Tags.lua mods:<br>
 current health with absorbs tag(current health + absorbs in the same number). Text format: [health:current-with-absorbs] <br>
