@@ -24,9 +24,9 @@ E.ShortPrefixStyles = {
 
 E.GetFormattedTextStyles = {
 	CURRENT = '%s',
-	CURRENT_MAX = '%s | %s',
-	CURRENT_PERCENT = '%s | %.1f%%',
-	PERCENT_CURRENT = '%.1f%% | %s',
+	CURRENT_MAX = '%s  |  %s',
+	CURRENT_PERCENT = '%s  |  %.1f%%',
+	PERCENT_CURRENT = '%.1f%%  |  %s',
 	CURRENT_MAX_PERCENT = '%s | %s | %.1f%%',
 	PERCENT = '%.1f%%',
 	DEFICIT = '-%s',
