@@ -20,3 +20,7 @@ Or just copy paste the entire code from here to each file. <br>
 29/04/22 <br>
 Change to Math.lua. <br>
 Made it possible to do "-divider" or "divider-" to make a | between tags. Example would be [health][divider-power] would show "healh | power" so adding "-divider" or "divider-" adds a | after or before the tag. <br>
+
+14/06/22 <br>
+Change to Math.lua <br>
+Added "current-percent2" format to Math.lua which shows "current (percent%)" instead of "current | percent%".
