@@ -241,9 +241,7 @@ function E:GetFormattedText(style, min, max, dec, short)
 	if max == 0 then max = 1 end
 	local perc = min / max * 100
 	
-	if min == 0 then 
-		return
-	elseif ((min == max) and (max <= 10000 and max >= 200)) then 
+	if (min == 0) or (min == max and 200 <= max and max <= 50000) then 
 		return
 	elseif style == 'CURRENT' or ((style == 'CURRENT_MAX' or style == 'CURRENT_MAX_PERCENT' or style == 'CURRENT_PERCENT' or style == 'CURRENT_PERCENT2' or style == 'PERCENT_CURRENT') and (max <= 200)) then
 		return format(E.GetFormattedTextStyles.CURRENT, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
