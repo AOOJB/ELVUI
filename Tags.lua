@@ -302,7 +302,7 @@ for textFormat in pairs(E.GetFormattedTextStyles) do
 	E:AddTag(format('power:%s', tagFormat), 'UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER', function(unit)
 		local powerType = UnitPowerType(unit)
 		local min = UnitPower(unit, powerType)
-		if min ~= 0 then
+		if min ~= 0 and min ~= max then
 			return E:GetFormattedText(textFormat, min, UnitPowerMax(unit, powerType))
 		end
 	end)
@@ -570,11 +570,23 @@ E:AddTag('health:currentdeficit-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_
     local absorbs = UnitGetTotalAbsorbs(unit) - deficit
 
     if currentHealth < healthMax then
-        return E:GetFormattedText('DEFICIT', currentHealth, healthMax, nil, true)
+        return E:GetFormattedText('DEFICIT', currentHealth, healthMax, nil, true)														
     end
     if currentHealth > healthMax then 
         return E:GetFormattedText('CURRENT', absorbs, absorbs, nil, true)
     end
+end)
+
+E:AddTag('classpower:divider-current-percent2:shortvalue', (E.myclass == 'MONK' and 'UNIT_AURA ' or E.myclass == 'DEATHKNIGHT' and 'RUNE_POWER_UPDATE ' or '') .. 'UNIT_POWER_FREQUENT UNIT_DISPLAYPOWER', function(unit)
+	local min, max = GetClassPower(E.myclass)
+	local powerType = UnitPowerType(unit)
+	local powermin = UnitPower(unit, powerType)
+	local powermax = UnitPowerMax(unit, powerType)
+	if (powermin > 0) and (powermin < powermax)  then
+		return E:GetFormattedText('DIVIDER_CURRENT_PERCENT2', min, max, nil, true)
+	else
+		return E:GetFormattedText('CURRENT_PERCENT2', min, max, nil, true)
+	end
 end)
 
 E:AddTag('health:deficit-percent:name', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_NAME_UPDATE', function(unit)
