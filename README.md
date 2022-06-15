@@ -24,3 +24,8 @@ Made it possible to do "-divider" or "divider-" to make a | between tags. Exampl
 14/06/22 <br>
 Change to Math.lua <br>
 Added "current-percent2" format to Math.lua which shows "current (percent%)" instead of "current | percent%".
+
+15/06/22 <br>
+Change to Math.lua and Tags.lua <br>
+Changed Math.lua to not return some numbers as 0 and it wont return when a capped numbers between 200 and 50000. <br>
+Added a tag to tags.lua that adds a divider based on if theres a number before or not. <br>
