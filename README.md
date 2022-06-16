@@ -29,3 +29,7 @@ Added "current-percent2" format to Math.lua which shows "current (percent%)" ins
 Change to Math.lua and Tags.lua <br>
 Changed Math.lua to not return some numbers as 0 and it wont return capped numbers between 200 and 50000. <br>
 Added a tag to tags.lua that adds a divider based on if theres a number before or not. <br>
+
+16/06/22 <br>
+Changed Math.lua to return health even if capped. <br>
+Changed Tags.lua added health = true to some health tags. <br>

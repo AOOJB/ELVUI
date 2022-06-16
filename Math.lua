@@ -237,18 +237,20 @@ function E:GetXYOffset(position, forcedX, forcedY)
 	end
 end
 
-function E:GetFormattedText(style, min, max, dec, short)
+function E:GetFormattedText(style, min, max, dec, short, health)
 	if max == 0 then max = 1 end
 	local perc = min / max * 100
 	
-	if (min == 0) or (min == max and 200 <= max and max <= 50000) then 
+	if min == 0 or (perc == 100 and health == false) then 
 		return
-	elseif style == 'CURRENT' or ((style == 'CURRENT_MAX' or style == 'CURRENT_MAX_PERCENT' or style == 'CURRENT_PERCENT' or style == 'CURRENT_PERCENT2' or style == 'PERCENT_CURRENT') and (max <= 200)) then
+	elseif style == 'CURRENT' or ((style == 'CURRENT_MAX' or style == 'CURRENT_MAX_PERCENT' or style == 'CURRENT_PERCENT' or style == 'CURRENT_PERCENT2' or style == 'PERCENT_CURRENT') and (max <= 200 and perc ~= 100) or (health == true and perc == 100)) then
 		return format(E.GetFormattedTextStyles.CURRENT, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
-	elseif style == 'DIVIDER_CURRENT' or style == 'DIVIDER_CURRENT_PERCENT2' and (max <= 200 or min == max) then
+	elseif style == 'DIVIDER_CURRENT' or style == 'DIVIDER_CURRENT_PERCENT2' and min > 0 and (max <= 200 or min == max) then
 		return format(E.GetFormattedTextStyles.DIVIDER_CURRENT, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
 	elseif style == 'CURRENT_DIVIDER' then
 		return format(E.GetFormattedTextStyles.CURRENT_DIVIDER, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
+	elseif perc == 100 then
+		return
 	else
 		local useStyle = E.GetFormattedTextStyles[style]
 		if not useStyle then return end

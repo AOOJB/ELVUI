@@ -534,11 +534,11 @@ E:AddTag('health:current-percent-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT
 
 	local absorb = UnitGetTotalAbsorbs(unit) or 0
     if absorb == 0 then
-        return E:GetFormattedText('CURRENT_PERCENT', UnitHealth(unit), UnitHealthMax(unit), nil, true)
+        return E:GetFormattedText('CURRENT_PERCENT', UnitHealth(unit), UnitHealthMax(unit), nil, true, true)
     end
 
     local healthTotalIncludingAbsorbs = UnitHealth(unit) + absorb
-    return E:GetFormattedText('CURRENT_PERCENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true)
+    return E:GetFormattedText('CURRENT_PERCENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true, true)
 end)
 
 E:AddTag('health:percent-current-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_AMOUNT_CHANGED UNIT_CONNECTION PLAYER_FLAGS_CHANGED', function(unit)
@@ -550,11 +550,11 @@ E:AddTag('health:percent-current-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT
 
 	local absorb = UnitGetTotalAbsorbs(unit) or 0
     if absorb == 0 then
-		return E:GetFormattedText('PERCENT_CURRENT', UnitHealth(unit), UnitHealthMax(unit), nil, true)
+		return E:GetFormattedText('PERCENT_CURRENT', UnitHealth(unit), UnitHealthMax(unit), nil, true, true)
     end
 
     local healthTotalIncludingAbsorbs = UnitHealth(unit) + absorb
-	return E:GetFormattedText('PERCENT_CURRENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true)
+	return E:GetFormattedText('PERCENT_CURRENT', healthTotalIncludingAbsorbs, UnitHealthMax(unit), nil, true, true)
 end)
 
 E:AddTag('health:currentdeficit-with-absorbs', 'UNIT_HEALTH UNIT_MAXHEALTH UNIT_ABSORB_AMOUNT_CHANGED UNIT_CONNECTION PLAYER_FLAGS_CHANGED', function(unit)
