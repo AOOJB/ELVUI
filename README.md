@@ -40,3 +40,6 @@ Added a tag to tags.lua that adds a divider based on if theres a number before o
 16/06/22 <br>
 Changed Math.lua to return health even if capped. <br>
 Changed Tags.lua added health = true to some health tags. <br>
+
+17/06/22 <br>
+Changed Math.lua, changed how shortvalue works so it returns one decimal.<br>
