@@ -24,8 +24,8 @@ E.ShortPrefixStyles = {
 
 E.GetFormattedTextStyles = {
 	CURRENT = '%s',
-	CURRENT_PERCENT = '%s - %.1f%%',
-	PERCENT_CURRENT = '%.1f%% - %s',
+	CURRENT_PERCENT = '%s  -  %.1f%%',
+	PERCENT_CURRENT = '%.1f%%  -  %s',
 	PERCENT = '%.1f%%',
 	DEFICIT = '-%s',
 }
@@ -237,7 +237,7 @@ end
 function E:GetFormattedText(style, min, max, dec, short)
 	if max == 0 then max = 1 end
 
-	if style == 'CURRENT' or ((style == 'CURRENT_PERCENT' or style=='PERCENT_CURRENT') and min == max) then
+	if style == 'CURRENT' or ((style == 'CURRENT_PERCENT' or style == 'PERCENT_CURRENT') and (max <= 200 or min == max)) then
 		return format(E.GetFormattedTextStyles.CURRENT, short and E:ShortValue(min, dec) or BreakUpLargeNumbers(min))
 	else
 		local useStyle = E.GetFormattedTextStyles[style]

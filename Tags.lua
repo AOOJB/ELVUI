@@ -294,8 +294,11 @@ for textFormat in pairs(E.GetFormattedTextStyles) do
 	E:AddTag(format('power:%s', tagFormat), 'UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER', function(unit)
 		local powerType = UnitPowerType(unit)
 		local min = UnitPower(unit, powerType)
-		if min ~= 0 then
-			return E:GetFormattedText(textFormat, min, UnitPowerMax(unit, powerType))
+		local max = UnitPowerMax(unit, powerType)
+		if (min ~= 0 and min ~= max and min <= 200) then
+			return E:GetFormattedText('CURRENT', min, UnitPowerMax(unit, powerType))
+		elseif (min ~= 0 and min ~= max) then
+			return E:GetFormattedText(tagFormat, min, UnitPowerMax(unit, powerType))
 		end
 	end)
 
@@ -371,7 +374,7 @@ for textFormat in pairs(E.GetFormattedTextStyles) do
 
 		E:AddTag(format('classpower:%s:shortvalue', tagFormat), (E.myclass == 'MONK' and 'UNIT_AURA ' or E.myclass == 'DEATHKNIGHT' and 'RUNE_POWER_UPDATE ' or '') .. 'UNIT_POWER_FREQUENT UNIT_DISPLAYPOWER', function()
 			local min, max = GetClassPower(E.myclass)
-			if min ~= 0 then
+			if (min ~= 0 and min ~= max) then
 				return E:GetFormattedText(textFormat, min, max, nil, true)
 			end
 		end, E.Classic)
