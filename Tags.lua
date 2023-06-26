@@ -298,7 +298,7 @@ for textFormat in pairs(E.GetFormattedTextStyles) do
 		if (min ~= 0 and min ~= max and min <= 200) then
 			return E:GetFormattedText('CURRENT', min, UnitPowerMax(unit, powerType))
 		elseif (min ~= 0 and min ~= max) then
-			return E:GetFormattedText(tagFormat, min, UnitPowerMax(unit, powerType))
+			return E:GetFormattedText(textFormat, min, UnitPowerMax(unit, powerType))
 		end
 	end)
 
